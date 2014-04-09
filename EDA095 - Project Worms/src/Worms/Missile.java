@@ -3,6 +3,8 @@ package Worms;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
 public class Missile extends GameObject {
@@ -21,10 +23,12 @@ public class Missile extends GameObject {
 	private Vector2f pos;
 	private Image image;
 	private char direction;
+	private Shape boundingBox;
 
 	public Missile(float x, float y, char direction) {
 		pos = new Vector2f(x, y);
 		this.direction = direction;
+		boundingBox = new Rectangle(x, y, 20f, 10f);
 		try {
 			image = new Image("res/world/missile.png");
 		} catch (SlickException e) {
@@ -35,11 +39,17 @@ public class Missile extends GameObject {
 	public void update(float delta) {
 		if (direction == 'r') {
 			pos.set((pos.getX() + (speed * delta)), pos.getY());
+			boundingBox.setX(pos.getX());
 		} else if (direction == 'l') {
 			pos.set((pos.getX() - (speed * delta)), pos.getY());
+			boundingBox.setX(pos.getX());
 		}
 	}
-
+	
+	public Shape getBoundingBox() {
+		  return this.boundingBox;
+		}
+	
 	public void render(Graphics g) {
 		g.drawImage(image, pos.getX(), pos.getY());
 	}
@@ -48,5 +58,12 @@ public class Missile extends GameObject {
 	}
 	public float getY(){
 		return pos.getY();
+	}
+	
+	public boolean isDirectionRight() {
+		return (direction == 'r');
+	}
+	public int objectId() {
+		return missile;
 	}
 }

@@ -61,6 +61,8 @@ public class Play extends BasicGameState {
 		if (win) {
 			g.drawString("WINNER", 400, 400);
 		}
+		
+
 	}
 
 	@Override
@@ -72,6 +74,9 @@ public class Play extends BasicGameState {
 			
 			for (int j = 0; j < playerlist.size(); j++){
 				if (objects.intersects(playerlist.get(j))){
+					//Worm dead = playerlist.get(j); //Masken som dog :D
+					playerlist.remove(j);
+					
 					System.out.println("Kollision");
 					win = true;
 				}

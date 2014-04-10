@@ -1,4 +1,6 @@
 package Worms;
+
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -8,12 +10,14 @@ public class Worms extends StateBasedGame {
 	public static final String gamename = "Worms";
 	public static final int menu = 0; 
 	public static final int play = 1; 
+	public static final int winner = 2;
 	
 	
 	public Worms(String gamename) {
 		super(gamename);
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
+		this.addState(new Winner(winner));
 		
 	
 	}
@@ -36,6 +40,7 @@ public class Worms extends StateBasedGame {
 	public void initStatesList(GameContainer gc) throws SlickException {
 		this.getState(menu).init(gc, this);
 		this.getState(play).init(gc, this);
+		this.getState(winner).init(gc, this);
 		this.enterState(menu);
 		
 	}

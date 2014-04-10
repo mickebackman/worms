@@ -1,5 +1,4 @@
 package Worms;
-
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -37,33 +36,36 @@ public class Missile extends GameObject {
 	}
 
 	public void update(float delta) {
-		if (direction == 'r') {
+		if (direction == 'r' && pos.getX() < 900 ) {
 			pos.set((pos.getX() + (speed * delta)), pos.getY());
 			boundingBox.setX(pos.getX());
-			//System.out.println("missilkord " + pos.getX() + "  boundbox " + boundingBox.getX());
-		} else if (direction == 'l') {
+			
+		} else if (direction == 'l' && pos.getX() > -100) {
 			pos.set((pos.getX() - (speed * delta)), pos.getY());
 			boundingBox.setX(pos.getX());
 		}
 	}
-	
+
 	public Shape getBoundingBox() {
- return this.boundingBox;
-		}
-	
+		return this.boundingBox;
+	}
+
 	public void render(Graphics g) {
 		g.drawImage(image, pos.getX(), pos.getY());
 	}
-	public float getX(){
+
+	public float getX() {
 		return pos.getX();
 	}
-	public float getY(){
+
+	public float getY() {
 		return pos.getY();
 	}
-	
+
 	public boolean isDirectionRight() {
 		return (direction == 'r');
 	}
+
 	public int objectId() {
 		return missile;
 	}

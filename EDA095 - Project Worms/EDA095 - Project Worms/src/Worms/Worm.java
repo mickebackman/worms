@@ -25,6 +25,7 @@ public class Worm extends GameObject {
 	private Animation movingleft, movingright, wormanim;
 	private Shape boundingBox;
 	private String name;
+	private Long lastfired;
 	
 	
 	public Worm(float x, float y, String name) {
@@ -32,7 +33,7 @@ public class Worm extends GameObject {
 		this.y = y;
 		this.name = name;
 		try {
-
+			lastfired = System.currentTimeMillis();
 			Image[] walkRight = { new Image("res/world/wormright.png"),
 					new Image("res/world/wormright.png") };
 			Image[] walkLeft = { new Image("res/world/wormleft.png"),
@@ -105,8 +106,17 @@ public class Worm extends GameObject {
 	public float getY() {
 		return y;
 	}
+	public long getLastFired() {
+		return lastfired;
+	}
+	public void setLastFired() {
+		lastfired = System.currentTimeMillis();
+	}
 	public int objectId(){
 		return player;
+	}
+	public String getName(){
+		return name;
 	}
 	public boolean isEnemy(Worm w){
 		if(w.name != this.name){

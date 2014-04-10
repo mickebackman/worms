@@ -40,6 +40,7 @@ public class Missile extends GameObject {
 		if (direction == 'r') {
 			pos.set((pos.getX() + (speed * delta)), pos.getY());
 			boundingBox.setX(pos.getX());
+			System.out.println("missilkord " + pos.getX() + "  boundbox " + boundingBox.getX());
 		} else if (direction == 'l') {
 			pos.set((pos.getX() - (speed * delta)), pos.getY());
 			boundingBox.setX(pos.getX());
@@ -47,7 +48,7 @@ public class Missile extends GameObject {
 	}
 	
 	public Shape getBoundingBox() {
-		  return this.boundingBox;
+ return this.boundingBox;
 		}
 	
 	public void render(Graphics g) {

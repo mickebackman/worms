@@ -25,7 +25,6 @@ public class Play extends BasicGameState {
 			throws SlickException {
 		// load all fonts, graphics, sounds, etc
 
-		quit = false;
 		back = new Image("res/world/world.png");
 		objectlist = new ArrayList<GameObject>();
 		playerlist = new ArrayList<Worm>();
@@ -68,13 +67,16 @@ public class Play extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
 			throws SlickException {
 		// game logic (AI, user input)
-		for (int i = 0; i < objectlist.size(); i ++) {
-			objectlist.get(i).update(delta * 1e-3f);
+		for (GameObject objects : objectlist) {
+			objects.update(delta * 1e-3f);
+			
 			for (int j = 0; j < playerlist.size(); j++){
-				if (objectlist.get(i).intersects(playerlist.get(j))){
+				if (objects.intersects(playerlist.get(j))){
 					win = true;
 				}
-					
+			}
+			if ( objects.getX() > 900 || objects.getY() >700 ) {
+				
 			}
 		}
 		

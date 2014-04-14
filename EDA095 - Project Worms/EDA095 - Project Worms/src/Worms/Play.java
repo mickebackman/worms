@@ -17,6 +17,10 @@ public class Play extends BasicGameState {
 	}
 
 	@Override
+	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+		playerlist.get(0).setPos(700f,300f);
+		playerlist.get(1).setPos(100f, 300f);
+	}
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
 		// load all fonts, graphics, sounds, etc
@@ -25,8 +29,9 @@ public class Play extends BasicGameState {
 		objectlist = new ArrayList<GameObject>();
 		playerlist = new ArrayList<Worm>();
 
-		playerlist.add(new Worm(300, 300, "A"));
-		playerlist.add(new Worm(5, 5, "B"));
+		playerlist.add(new Worm(700, 300, "A"));
+		playerlist.add(new Worm(100, 300, "B"));
+		playerlist.get(0).setDirection(false);
 	}
 
 	@Override

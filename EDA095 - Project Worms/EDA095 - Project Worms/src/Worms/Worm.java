@@ -106,6 +106,12 @@ public class Worm extends GameObject {
 	public float getY() {
 		return y;
 	}
+	public void setDirection(Boolean right){
+		if (right){
+			wormanim = movingright;
+		}
+		else wormanim = movingleft;
+	}
 	public long getLastFired() {
 		return lastfired;
 	}
@@ -118,7 +124,11 @@ public class Worm extends GameObject {
 	public String getName(){
 		return name;
 	}
-	public boolean isEnemy(Worm w){
+	public void setPos(float x, float y){
+		this.x = x;
+		this.y = y;
+	}
+	public boolean isEnemy(Worm w){ // används denna?
 		if(w.name != this.name){
 			return true;
 		}
